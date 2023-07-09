@@ -1,6 +1,8 @@
 # Local .terraform directories
 **/.terraform/*
 
+./networking/aws/vpc_test.txt
+
 # .tfstate files
 *.tfstate
 *.tfstate.*

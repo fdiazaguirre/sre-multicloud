@@ -56,3 +56,22 @@ resource "aws_iam_user_policy_attachment" "sre_user_attach" {
   user       = aws_iam_user.sre_user.name
   policy_arn = aws_iam_policy.sre_policy.arn
 }
+
+resource "aws_iam_group" "sre_group" {
+  name = "SRE_Group"
+}
+
+resource "aws_iam_group_policy_attachment" "sre_group_attach" {
+  group      = aws_iam_group.sre_group.name
+  policy_arn = aws_iam_policy.sre_policy.arn
+}
+
+resource "aws_iam_group_membership" "sre_group_membership" {
+  name = "sre_group_membership"
+
+  users = [
+    aws_iam_user.sre_user.name
+  ]
+
+  group = aws_iam_group.sre_group.name
+}
