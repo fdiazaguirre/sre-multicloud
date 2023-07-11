@@ -6,8 +6,15 @@ module "eks" {
   cluster_name    = "my-cluster"
   cluster_version = "1.24"
 
-  subnet_ids = [aws_subnet.web-1a.id, aws_subnet.app-1a.id, aws_subnet.db-1a.id, aws_subnet.web-1b.id, aws_subnet.app-1b.id, aws_subnet.db-1b.id]
-  vpc_id     = aws_vpc.main.id
+  subnet_ids = [
+    "aws_subnet.web-1a.id",
+    "aws_subnet.app-1a.id",
+    "aws_subnet.db-1a.id",
+    "aws_subnet.web-1b.id",
+    "aws_subnet.app-1b.id",
+    "aws_subnet.db-1b.id"
+  ]
+  vpc_id = aws_vpc.main.id
 
   cluster_endpoint_public_access = true
 
