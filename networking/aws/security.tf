@@ -7,14 +7,14 @@ resource "aws_security_group" "db" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [aws_subnet.app.cidr_block]
+    cidr_blocks = [aws_subnet.app-1a.cidr_block, aws_subnet.app-1b.cidr_block]
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [aws_subnet.app.cidr_block]
+    cidr_blocks = [aws_subnet.app-1a.cidr_block, aws_subnet.app-1b.cidr_block]
   }
 }
 
@@ -27,6 +27,6 @@ resource "aws_security_group" "app" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [aws_subnet.web.cidr_block, aws_subnet.db.cidr_block]
+    cidr_blocks = [aws_subnet.web-1a.cidr_block, aws_subnet.db-1a.cidr_block, aws_subnet.web-1b.cidr_block, aws_subnet.db-1b.cidr_block]
   }
 }

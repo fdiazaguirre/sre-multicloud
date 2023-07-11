@@ -1,3 +1,4 @@
+# FIXME: is not working since is using the downloaded module as a source.
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.5.1"
@@ -5,7 +6,7 @@ module "eks" {
   cluster_name    = "my-cluster"
   cluster_version = "1.24"
 
-  subnet_ids = [aws_subnet.web.id, aws_subnet.app.id, aws_subnet.db.id]
+  subnet_ids = [aws_subnet.web-1a.id, aws_subnet.app-1a.id, aws_subnet.db-1a.id, aws_subnet.web-1b.id, aws_subnet.app-1b.id, aws_subnet.db-1b.id]
   vpc_id     = aws_vpc.main.id
 
   cluster_endpoint_public_access = true
